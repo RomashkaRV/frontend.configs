@@ -1,52 +1,45 @@
-{
-  "extends": "stylelint-config-standard-scss",
-  "plugins": [
-    "stylelint-order"
-  ],
-  "rules": {
+/**
+ * Единый конфиг Stylelint для SCSS.
+ * Отступы и форматирование значений контролирует Prettier (см. prettier.config.js),
+ * Stylelint отвечает за правила кода и порядок свойств.
+ *
+ * @type {import("stylelint").Config}
+ */
+export default {
+  extends: ["stylelint-config-standard-scss"],
+  plugins: ["stylelint-order"],
+  rules: {
     "scss/double-slash-comment-whitespace-inside": null,
     "selector-type-case": null,
     "no-descending-specificity": null,
     "selector-class-pattern": null,
-    "order/order": [
-      "custom-properties",
-      "declarations"
-    ],
     "custom-property-empty-line-before": null,
     "declaration-empty-line-before": null,
     "color-function-notation": null,
     "alpha-value-notation": null,
     "color-hex-length": null,
     "property-no-vendor-prefix": null,
-    "value-keyword-case": [
-      "lower",
-      {
-        "ignoreProperties": [
-          "text-rendering"
-        ]
-      }
-    ],
+    "value-keyword-case": ["lower", { ignoreProperties: ["text-rendering"] }],
+    "order/order": ["custom-properties", "declarations"],
     "order/properties-order": [
       {
-        "groupName": "width",
-        "emptyLineBefore": "always",
-        "properties": [
+        groupName: "width",
+        emptyLineBefore: "always",
+        properties: [
           "width",
           "min-width",
           "max-width",
           "height",
           "min-height",
-          "max-height"
+          "max-height",
+          "aspect-ratio"
         ]
       },
+      { emptyLineBefore: "always", properties: ["box-sizing"] },
       {
-        "emptyLineBefore": "always",
-        "properties": ["box-sizing"]
-      },
-      {
-        "groupName": "flex-grow",
-        "emptyLineBefore": "always",
-        "properties": [
+        groupName: "flex-grow",
+        emptyLineBefore: "always",
+        properties: [
           "flex",
           "flex-flow",
           "flex-basis",
@@ -55,59 +48,71 @@
         ]
       },
       {
-        "groupName": "margin",
-        "emptyLineBefore": "always",
-        "properties": [
+        groupName: "margin",
+        emptyLineBefore: "always",
+        properties: [
           "margin",
           "margin-top",
           "margin-right",
           "margin-bottom",
           "margin-left",
+          "margin-inline",
+          "margin-block",
           "padding",
           "padding-top",
           "padding-right",
           "padding-bottom",
-          "padding-left"
+          "padding-left",
+          "padding-inline",
+          "padding-block"
         ]
       },
       {
-        "groupName": "position",
-        "emptyLineBefore": "always",
-        "properties": [
-          "position",
-          "top",
-          "left",
-          "right",
-          "bottom"
-        ]
+        groupName: "position",
+        emptyLineBefore: "always",
+        properties: ["position", "inset", "top", "left", "right", "bottom"]
       },
       {
-        "groupName": "flex-order",
-        "emptyLineBefore": "always",
-        "properties": [
+        groupName: "flex-order",
+        emptyLineBefore: "always",
+        properties: [
           "order",
-          "align-self"
+          "align-self",
+          "justify-self",
+          "grid-area",
+          "grid-column",
+          "grid-row"
         ]
       },
       {
-        "groupName": "display",
-        "emptyLineBefore": "always",
-        "properties": [
+        groupName: "display",
+        emptyLineBefore: "always",
+        properties: [
           "display",
           "grid-template-columns",
+          "grid-template-rows",
+          "grid-template-areas",
+          "grid-auto-flow",
+          "grid-auto-columns",
+          "grid-auto-rows",
           "align-content",
           "align-items",
           "justify-content",
+          "justify-items",
+          "place-items",
+          "place-content",
           "flex-direction",
           "vertical-align",
           "flex-wrap",
-          "gap"
+          "gap",
+          "row-gap",
+          "column-gap"
         ]
       },
       {
-        "groupName": "font",
-        "emptyLineBefore": "always",
-        "properties": [
+        groupName: "font",
+        emptyLineBefore: "always",
+        properties: [
           "font",
           "font-family",
           "font-size",
@@ -121,9 +126,9 @@
         ]
       },
       {
-        "groupName": "text",
-        "emptyLineBefore": "always",
-        "properties": [
+        groupName: "text",
+        emptyLineBefore: "always",
+        properties: [
           "text-align",
           "text-align-last",
           "text-outline",
@@ -147,9 +152,9 @@
         ]
       },
       {
-        "groupName": "list",
-        "emptyLineBefore": "always",
-        "properties": [
+        groupName: "list",
+        emptyLineBefore: "always",
+        properties: [
           "list-style",
           "list-style-position",
           "list-style-type",
@@ -157,9 +162,9 @@
         ]
       },
       {
-        "groupName": "animation",
-        "emptyLineBefore": "always",
-        "properties": [
+        groupName: "animation",
+        emptyLineBefore: "always",
+        properties: [
           "animation",
           "animation-name",
           "animation-duration",
@@ -174,23 +179,17 @@
       "cursor",
       "resize",
       {
-        "emptyLineBefore": "always",
-        "properties": [
-          "user-select",
-          "pointer-events"
-        ]
+        emptyLineBefore: "always",
+        properties: ["user-select", "pointer-events"]
       },
       {
-        "emptyLineBefore": "always",
-        "properties": [
-          "transform",
-          "transform-origin"
-        ]
+        emptyLineBefore: "always",
+        properties: ["transform", "transform-origin"]
       },
       {
-        "groupName": "border",
-        "emptyLineBefore": "always",
-        "properties": [
+        groupName: "border",
+        emptyLineBefore: "always",
+        properties: [
           "outline",
           "outline-width",
           "outline-style",
@@ -232,9 +231,9 @@
         ]
       },
       {
-        "groupName": "transition",
-        "emptyLineBefore": "always",
-        "properties": [
+        groupName: "transition",
+        emptyLineBefore: "always",
+        properties: [
           "transition",
           "transition-delay",
           "transition-timing-function",
@@ -243,36 +242,21 @@
         ]
       },
       {
-        "emptyLineBefore": "always",
-        "properties": [
-          "overflow",
-          "overflow-x",
-          "overflow-y"
-        ]
+        emptyLineBefore: "always",
+        properties: ["overflow", "overflow-x", "overflow-y"]
       },
       {
-        "emptyLineBefore": "always",
-        "properties": [
-          "visibility",
-          "opacity"
-        ]
+        emptyLineBefore: "always",
+        properties: ["object-fit", "object-position"]
       },
+      { emptyLineBefore: "always", properties: ["visibility", "opacity"] },
+      { emptyLineBefore: "always", properties: ["z-index"] },
+      { emptyLineBefore: "always", properties: ["box-shadow"] },
+      { emptyLineBefore: "always", properties: ["filter", "backdrop-filter"] },
       {
-        "emptyLineBefore": "always",
-        "properties": ["z-index"]
-      },
-      {
-        "emptyLineBefore": "always",
-        "properties": ["box-shadow"]
-      },
-      {
-        "emptyLineBefore": "always",
-        "properties": ["backdrop-filter"]
-      },
-      {
-        "groupName": "color",
-        "emptyLineBefore": "always",
-        "properties": [
+        groupName: "color",
+        emptyLineBefore: "always",
+        properties: [
           "color",
           "background",
           "background-color",
@@ -306,15 +290,7 @@
       "box-decoration-break",
       "quotes",
       "counter-reset",
-      "counter-increment",
-      "table-layout",
-      "empty-cells",
-      "caption-side",
-      "nav-index",
-      "nav-up",
-      "nav-right",
-      "nav-down",
-      "nav-left"
+      "counter-increment"
     ]
   }
-}
+};
