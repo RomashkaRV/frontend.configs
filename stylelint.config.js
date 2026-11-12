@@ -13,6 +13,11 @@ export default {
     "selector-type-case": null,
     "no-descending-specificity": null,
     "selector-class-pattern": null,
+    // :global / :local — синтаксис CSS Modules
+    "selector-pseudo-class-no-unknown": [
+      true,
+      { ignorePseudoClasses: ["global", "local"] }
+    ],
     "custom-property-empty-line-before": null,
     "declaration-empty-line-before": null,
     "color-function-notation": null,

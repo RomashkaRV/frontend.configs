@@ -1,6 +1,6 @@
 {
   "name": "@romashka_rv/frontend-config",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Shared configs for frontend: ESLint 9, Stylelint 17, Prettier 3, Commitlint 21, TypeScript 6 (Next.js 16, React 19)",
   "repository": "https://github.com/RomashkaRV/frontend.configs",
   "author": "RomashkaRV",
